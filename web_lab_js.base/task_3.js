@@ -15,7 +15,7 @@ for (let student of students) {
 }
 
 let sum = 0;
-for (const student of students) {
+for (let student of students) {
     sum += student.grade;
 }
 const average = sum / students.length;
