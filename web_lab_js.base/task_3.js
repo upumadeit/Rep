@@ -8,8 +8,7 @@ const students = [
 
 const mingrade = 3;
 
-console.log('Ученики с оценкой выше заданной:');
-for (const student of students) {
+for (let student of students) {
     if (student.grade > mingrade) {
         console.log(student.name + ' - ' + student.grade);
     }
