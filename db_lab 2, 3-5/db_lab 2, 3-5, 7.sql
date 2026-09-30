@@ -30,6 +30,9 @@ CREATE TABLE Authorship (
 );
 
 
+
+
+
 INSERT INTO Reader (fio, phone_number) VALUES
 ('Анна Петрова', '+7-900-111-22-33'),
 ('Иван Соколов', '+7-900-222-33-44'),
@@ -79,3 +82,38 @@ WHERE id_reader = 4;
 
 DELETE FROM loan
 WHERE id_reader = 1;
+
+
+
+
+SELECT * FROM reader;
+
+SELECT title, year_pub FROM book;
+
+SELECT * FROM book
+WHERE CAST(book.year_pub AS VARCHAR) LIKE '18%';
+
+SELECT * FROM book 
+WHERE CAST(book.year_pub AS VARCHAR) BETWEEN '1917' AND '1991';
+
+SELECT * FROM reader
+WHERE phone_number = '+7-900-222-33-44';
+
+SELECT * FROM reader
+WHERE fio LIKE '%в';
+
+SELECT * FROM loan
+WHERE action_date IS NULL;
+
+SELECT title, year_pub FROM book ORDER BY title;
+
+INSERT INTO loan (id_reader, id_book, lend_date, expected_date, action_date) VALUES
+(1, '978-5-17-118366-8', '2026-09-01', '2026-09-10', NULL),
+(2, '978-5-389-06256-6', '2026-09-02', '2026-09-11', NULL);
+SELECT * FROM loan
+WHERE action_date IS NULL
+ORDER BY expected_date;
+
+SELECT * FROM book
+ORDER BY year_pub DESC
+LIMIT 3; -- самые новые книги
