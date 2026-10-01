@@ -1,17 +1,5 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: black;
-}
-
 .wrapper {
-  max-width: 800px;
+  width: 800px;
   margin: 0 auto;
   padding: 30px 20px;
 }
@@ -54,7 +42,7 @@ body {
 hr {
   margin: 20px 0;
   border: none;
-  border-top: 1px solid #b8b8b8;
+  border-top: 1px solid lightgray;
 }
 
 .about {
@@ -76,12 +64,13 @@ hr {
   flex: 1;
   text-align: center;
   color: green;
-  font-weight: bold;
   padding: 10px 0;
 }
 
 .table_content {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table_hobbies,
@@ -102,7 +91,6 @@ hr {
   background: green;
   text-align: center;
   color: white;
-  font-weight: bold;
   padding: 8px 0;
   margin-top: 40px;
 }
@@ -123,16 +111,14 @@ hr {
 }
 
 .tech_icon img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .feedback {
   background: green;
   text-align: center;
   color: white;
-  font-weight: bold;
   padding: 10px 0;
   margin-top: 40px;
 }
@@ -142,7 +128,7 @@ hr {
   padding-bottom: 30px;
 }
 
-.form_row {
+.form_view {
   display: flex;
   gap: 15px;
   margin-bottom: 15px;
@@ -150,24 +136,23 @@ hr {
 
 .form_input {
   flex: 1;
-  border: 1px solid #b8b8b8;
+  border: 1px solid lightgray;
   border-radius: 10px;
   padding: 10px;
   font-size: 15px;
 }
 
-.form_textarea {
+.textarea {
   width: 100%;
   height: 100px;
-  border: 1px solid #b8b8b8;
+  border: 1px solid lightgray;
   border-radius: 10px;
   padding: 10px;
-  font-family: Arial, sans-serif;
   font-size: 15px;
   margin-bottom: 15px;
 }
 
-.form_button {
+.button {
   display: block;
   margin: 0 auto;
   color: white;
