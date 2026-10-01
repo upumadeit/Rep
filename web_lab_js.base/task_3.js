@@ -18,5 +18,5 @@ let sum = 0;
 for (let student of students) {
     sum += student.grade;
 }
-const average = sum / students.length;
-console.log('Средняя оценка: ' + average);
+const avg = sum / students.length;
+console.log('Средняя оценка: ' + avg);
