@@ -100,8 +100,7 @@ FROM orders o
 WHERE EXISTS (
     SELECT oi.price_per_unit
     FROM order_items oi
-    WHERE oi.order_id = o.order_id AND oi.price_per_unit > 100000
-);
+    WHERE oi.order_id = o.order_id AND oi.price_per_unit > 100000);
 
 SELECT DISTINCT c.full_name, oi.product_id
 FROM customers c
