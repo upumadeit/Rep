@@ -72,29 +72,35 @@ INSERT INTO Order_Items (order_id, product_id, quantity, price_per_unit) VALUES
 (4, 1, 1, 70000.00),  -- Алексей купил Смартфон
 (4, 5, 1, 4500.00);   -- и Фен
 
+--1
 SELECT c.full_name, o.order_date
 FROM Customers c
 JOIN Orders o ON c.customer_id = o.customer_id;
 
+--2
 SELECT c.full_name
 FROM Customers c
 LEFT JOIN Orders o ON c.customer_id = o.customer_id
 WHERE o.order_id = 1
 
+--3    
 SELECT p.product_name, oi.quantity, oi.price_per_unit
 FROM Orders o
 JOIN Order_Items oi ON o.order_id = oi.order_id
 JOIN products p ON p.product_id = oi.product_id
 WHERE o.order_id = 1;
 
+--4
 SELECT c.full_name
 FROM customers c
 WHERE c.customer_id IN (SELECT o.customer_id FROM orders o WHERE o.order_id IN (SELECT oi.order_id FROM order_items oi WHERE (oi.product_id=1)));
 
+--5
 SELECT product_name, price
 FROM products
 WHERE price > (SELECT AVG(price) FROM products);
 
+--6
 SELECT o.order_id, o.order_date
 FROM orders o
 WHERE EXISTS (
@@ -102,41 +108,49 @@ WHERE EXISTS (
     FROM order_items oi
     WHERE oi.order_id = o.order_id AND oi.price_per_unit > 100000);
 
+--7.1
 SELECT DISTINCT c.full_name, oi.product_id
 FROM customers c
 LEFT JOIN orders o ON c.customer_id = o.customer_id
 LEFT JOIN order_items oi ON o.order_id = oi.order_id AND oi.product_id = 2
 WHERE oi.product_id IS NULL;
 
+--7.2
 SELECT full_name
 FROM customers 
 WHERE customer_id NOT IN (SELECT customer_id FROM orders o WHERE order_id IN (SELECT order_id FROM order_items oi WHERE oi.product_id = 2));
 
+--8
 SELECT p.product_name
 FROM products p
 LEFT JOIN order_items oi ON p.product_id = oi.product_id
 WHERE oi.product_id IS NULL;
 
+--9
 SELECT c.full_name, p.product_name, oi.quantity
 FROM customers c
 FULL OUTER JOIN orders o ON c.customer_id = o.customer_id
 FULL OUTER JOIN order_items oi ON o.order_id = oi.order_id
 FULL OUTER JOIN products p ON oi.product_id = p.product_id;
 
+--10.1
 SELECT c.full_name
 FROM customers c
 JOIN orders o ON c.customer_id = o.customer_id
 JOIN order_items oi ON o.order_id = oi.order_id
 WHERE oi.price_per_unit = (SELECT MAX(price_per_unit) FROM order_items);
 
+--10.2
 SELECT c.full_name
 FROM customers c
 WHERE c.customer_id IN (SELECT customer_id FROM orders WHERE order_id IN (SELECT order_id FROM order_items WHERE price_per_unit = (SELECT MAX(price_per_unit) FROM order_items)));
 
+--11
 SELECT c.full_name, p.category
 FROM customers c
 CROSS JOIN products p;
 
+--12
 SELECT c.full_name AS new_customer, r.full_name AS recommended_by
 FROM customers c
 JOIN customers r ON c.recommended_by = r.customer_id;
