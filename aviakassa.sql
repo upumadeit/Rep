@@ -41,7 +41,7 @@ CREATE TABLE Seats (
 
 CREATE TABLE Airports (
     airport_id SERIAL PRIMARY KEY,
-    airplane_id INT REFERENCES Airplanes(airplane_id),
+    name_airport VARCHAR(100),
     city_id INT REFERENCES Cities(city_id)
 );
 
